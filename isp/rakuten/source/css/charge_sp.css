@@ -1,0 +1,300 @@
+/*
+Theme Name: 
+Author: yo_ito
+Description: 
+Version: 1.0
+*/
+
+/* =Reset
+------------------------------------------------------------------------------------------------------------- */
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	word-wrap: break-word;
+}
+body {
+	line-height: 1;
+	font-size: 0.87em;
+	font-weight: normal;
+}
+ol,ul {
+	list-style: none;
+}
+blockquote,q {
+	quotes: none;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption,th,td {
+	font-weight: normal;
+	text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+	clear: both;
+	font-weight: normal;
+}
+html {
+	overflow-y: scroll;
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+a:focus {
+	outline: thin dotted;
+	font-weight: normal;
+}
+a, a:hover, a:visited {
+	text-decoration: none;
+	text-shadow: none;
+	font-weight: normal;
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section {
+	display: block;
+}
+audio,canvas,video {
+	display: inline-block;
+}
+audio:not([controls]) {
+	display: none;
+}
+del {
+	color: #333;
+}
+ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+hr {
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin: 24px;
+	margin-bottom: 1.714285714rem;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+small {
+	font-size: smaller;
+}
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+	background: transparent;
+	vertical-align: bottom;
+}
+
+/* Clearing floats */
+.clear:after,
+.wrapper:after,
+.format-status .entry-header:after {
+	clear: both;
+}
+.clear:before,
+.clear:after,
+.wrapper:before,
+.wrapper:after,
+.format-status .entry-header:before,
+.format-status .entry-header:after {
+	display: table;
+	content: "";
+	clear: both;
+}
+
+
+/* =commonly used
+---------------------------------------------------------------------------------------------- */
+.T-W-O {
+	text-indent: 200%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.FB {
+	font-weight: bold;
+}
+.CWH {
+	color: #FFF;
+}
+.CRE {
+	color: #F00;
+}
+.CPU {
+	color: #5e03ba;
+}
+.CYE {
+	color: #ffd700;
+}
+.MAU {
+	margin: 0 auto;
+}
+.TC {
+	text-align: center;
+}
+.TR {
+	text-align: right;
+}
+.CPT {
+	cursor: pointer;
+}
+.B-S {
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+	-moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+	-o-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+	-ms-box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+.cssB-01 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	color: #FFF;
+	display: inline-block;
+	text-align: center;
+	/* width: 28%; */
+	width: 90%;
+	/* padding: 11% 0; */
+	padding: 10px 0;
+	margin: 0 auto;
+	background: -moz-linear-gradient(
+    top,
+    #6b6b6b 0%,
+    #000000);
+	background: -webkit-gradient(
+    linear, left top, left bottom,
+    from(#6b6b6b),
+    to(#000000));
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	/* border-radius: 50%; */
+	border-radius: 5px;
+	border: 1px solid #000000;
+	-moz-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.7);
+	-webkit-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.7);
+	box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.7);
+	text-shadow:
+    0px -1px 0px rgba(000,000,000,0.4),
+    0px 1px 0px rgba(255,255,255,0.3);
+}
+@-webkit-keyframes pulse {
+ from {
+   opacity: 1.0;/*透明度100%*/
+ }
+ to {
+   opacity: 0.5;/*透明度80%*/
+ }
+}
+.blinking{
+	-webkit-animation-name: pulse;/* 実行する名前 */
+	-webkit-animation-duration: 0.5s;/* 0.3秒かけて実行 */
+	-webkit-animation-iteration-count:infinite;/* 何回実行するか。infiniteで無限 */
+	-webkit-animation-timing-function:ease-in-out;/* イーズインアウト */
+	-webkit-animation-direction: alternate;/* alternateにするとアニメーションが反復 */
+	-webkit-animation-delay: 0s; /* 実行までの待ち時間 */
+}
+
+/****************************************************************************************
+ **********   Default
+ ****************************************************************************************/
+body {
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", "メイリオ", "Osaka", "MS PGothic", arial, helvetica, sans-serif;
+  font-size: 0.9em;
+  margin: 0px;
+  padding: 0px;
+  line-height: 1.2em;
+  background:#430627 url(../../image/charge/bg.jpg) repeat-x 50% 0%; 
+}
+a {
+  font-size: 0.9em;
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo", "メイリオ", "Osaka", "MS PGothic", arial, helvetica, sans-serif;
+}
+/****************************************************************************************
+ **********   Contents
+ ****************************************************************************************/
+#base {
+  width: 95%;
+  margin: 20px auto;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: -moz-linear-gradient(
+		top,
+		#e8cce7 0%,
+		#f0efed 22%,
+		#ebebeb);
+  background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#e8cce7),
+		color-stop(0.22, #f0efed),
+		to(#ebebeb));
+  -moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px -1px 0px rgba(255,255,255,0.7);
+  -webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px -1px 0px rgba(255,255,255,0.7);
+  box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px -1px 0px rgba(255,255,255,0.7);
+}
+article {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+article h1 {
+  color: #680033;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+section h2 {
+  text-align: center;
+}
+section h2 img {
+  width: 90%;
+  margin: 20px 0;
+}
+section table {
+  width: 100%;
+}
+section table th,
+section table td {
+  padding: 1em 0.5em;
+  border: solid 1px #4B3939;
+}
+section table th {
+  background-color: #FED3E6;
+}
+#frm_btn {
+  margin: 20px;
+  text-align: center;
+}
+footer {
+  text-align: center;
+}

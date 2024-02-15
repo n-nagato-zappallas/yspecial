@@ -1,0 +1,493 @@
+<?php
+// 月運対応 /////////////////////////////////////////////////////////////////////////////////////
+$list_mont = array( 'nw22_029', 'nw22_030', 'nw22_031', 'nw22_032', 'nw22_033', 'nw22_034', 
+					'nw22_035', 'nw22_036', 'nw22_037', 'nw22_038', 'nw22_039', 'nw22_040', 
+					'nw22_041', 'nw22_042', 'nw22_043', 'nw22_044', 'nw22_045', 'nw22_046', 
+					'nw22_047', 'nw22_048', 'nw22_049', 'nw22_050', 'nw22_051', 'nw22_052', 
+					'nw22_053', 'nw22_054', 'nw22_055', 'nw22_056', 'nw22_057', 'nw22_058', 
+					'nw22_059', 'nw22_060', 'nw22_061', 'nw22_062', 'nw22_063', 'nw22_064',
+					'nw22_065', 'nw22_066', 'nw22_067', 'nw22_068', 'nw22_069', 'nw22_070',
+					'nw22_071', 'nw22_072', 'nw22_073', 'nw22_074', 'nw22_075', 'nw22_076'  );
+
+$arrM = array( '202201', '20211201' );
+$m = $self->get('menu_id');
+
+if( $self->get('release_date') >= '20221027' ) {
+	$arrM = array( '202211', '20221027' );
+
+} else if( $self->get('isp') == 11 && $self->get('release_date') >= '20220927' ) {
+	$arrM = array( '202210', '20220926' );
+} else if( $self->get('isp') != 11 && $self->get('release_date') >= '20220926' ) {
+	$arrM = array( '202210', '20220926' );
+	
+} else if( $self->get('release_date') >= '20220825' ) {
+	$arrM = array( '202209', '20220825' );
+
+} else if( $self->get('isp') == 11 && $self->get('release_date') >= '20220727' ) {
+	$arrM = array( '202208', '20220725' );
+} else if( $self->get('isp') != 11 && $self->get('release_date') >= '20220725' ) {
+	$arrM = array( '202208', '20220725' );
+
+} else if( $self->get('release_date') >= '20220627' ) {
+	$arrM = array( '202207', '20220627' );
+} else if( $self->get('release_date') >= '20220526' ) {
+	$arrM = array( '202206', '20220526' );
+
+} else if( $self->get('isp') == 11 && $self->get('release_date') >= '20220426' ) {
+	$arrM = array( '202205', '20220425' );
+} else if( $self->get('isp') != 11 && $self->get('release_date') >= '20220425' ) {
+	$arrM = array( '202205', '20220425' );
+
+} else if( $self->get('release_date') >= '20220328' ) {
+	$arrM = array( '202204', '20220328' );
+} else if( $self->get('release_date') >= '20220224' ) {
+	$arrM = array( '202203', '20220224' );
+} else if( $self->get('release_date') >= '20220127' ) {
+	$arrM = array( '202202', '20220127' );
+}
+
+$SmartyObj->assign( 'release_month', $arrM[0] );
+$month_list = array( 'single' => array(), 'double' => array() );
+
+if( $arrM[0] > 202101 )
+	$month_list['single'] = getIndexData2( $list_mont, $arrM[1] );
+$SmartyObj->assign( 'month_list', $month_list );
+
+
+// 年運対応 /////////////////////////////////////////////////////////////////////////////////////
+
+		$list_life = array( 'nw22_005', 'nw22_009', 'nw22_013', 'nw22_017', 'nw22_021', 'nw22_025' );
+		$list_work = array( 'nw22_006', 'nw22_010', 'nw22_014', 'nw22_018', 'nw22_022', 'nw22_026' );
+		$list_meet = array( 'nw22_007', 'nw22_011', 'nw22_015', 'nw22_019', 'nw22_023', 'nw22_027' );
+		$list_love = array( 'nw22_008', 'nw22_012', 'nw22_016', 'nw22_020', 'nw22_024', 'nw22_028' );
+
+		$SmartyObj->assign( 'list_life', getIndexData( $list_life ) );
+		$SmartyObj->assign( 'list_meet', getIndexData( $list_meet ) );
+		$SmartyObj->assign( 'list_work', getIndexData( $list_work ) );
+		$SmartyObj->assign( 'list_love', getIndexData( $list_love ) );
+
+
+// 他社年運対応 /////////////////////////////////////////////////////////////////////////////////////
+
+// メニュー情報
+$ExtraData = array(
+	'101' => array( 'chara' => 'a', 
+        'menu_title' => 'アイビー茜が占うあなたの2022年【恋愛/仕事/お金/チャンス/ピンチ】',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/ccs/cc_akane/ay00196.html',
+        'contents_id'   => 'akane_ccs', 'img_name'   => 'ccs_akane', 'teller_name'   => 'アイビー茜',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'102' => array( 'chara' => 'a', 
+        'menu_title' => '詳細鑑定【2022年、あなたの全運勢】恋/結婚/仕事/財/訪れるチャンス',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/douwa_stw/menu/42.html',
+        'contents_id'   => 'douwa_stw', 'img_name'   => 'stw_douwa', 'teller_name'   => '天野原みちる',
+        'menu_price' => '1500',   'menu_discount' => '1300', 'release_date'  => '20210901',
+	),
+//	'103' => array( 'chara' => 'a', 
+//        'menu_title' => '2021年のあなたへ【イヴルルド遙華が占う】今後1年の愛と人生◆幸せ',
+//        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/ivnaruru/UkwTopIVNA0002500.html',
+//        'contents_id'   => 'ivnaruru_tel', 'img_name'   => 'tel_ivnaruru', 'teller_name'   => 'イヴルルド遙華',
+//        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+//	),
+	'104' => array( 'chara' => 'a', 
+        'menu_title' => 'イヴルルド遙華『残り3ヶ月+2022年』あなたの愛/職/財/人生総合鑑定',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/ivnaruru/UkwTopIVNA0003200.html',
+        'contents_id'   => 'ivnaruru_tel', 'img_name'   => 'tel_ivnaruru', 'teller_name'   => 'イヴルルド遙華',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'105' => array( 'chara' => 'a', 
+        'menu_title' => '東大式四柱推命5000字鑑定◆2022年あなたの恋/仕事/財/人生21の運命',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/todai_rcm/inp090.html',
+        'contents_id'   => 'todai_rcm', 'img_name'   => 'rcm_todai', 'teller_name'   => '井上幸萃',
+        'menu_price' => '2300',   'menu_discount' => '1850', 'release_date'  => '20210901',
+	),
+	'106' => array( 'chara' => 'a', 
+        'menu_title' => 'ガイドが告げる【2022年の彼】状況/環境/心境～あなたとの付き合い方',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/com/ena/3030.html',
+        'contents_id'   => 'ena_com', 'img_name'   => 'com_ena', 'teller_name'   => 'ena',
+        'menu_price' => '1200',   'menu_discount' => '1000', 'release_date'  => '20210901',
+	),
+	'107' => array( 'chara' => 'a', 
+        'menu_title' => '岡井浄幸が紐解く◆2022年の運勢≪恋愛・仕事・結婚・財≫徹底鑑定',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/okai_zap/input/oj5005a.html',
+        'contents_id'   => 'okai_zap', 'img_name'   => 'zap_okai', 'teller_name'   => '岡井浄幸',
+        'menu_price' => '1500',   'menu_discount' => '1275', 'release_date'  => '20210901',
+	),
+
+
+	'201' => array( 'chara' => 'k', 
+        'menu_title' => '鏡リュウジが占う！【2022年あなたの運勢】人生/恋/仕事◆総合鑑定書',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/complete_zap/input/cm5032a.html',
+        'contents_id'   => 'complete_zap', 'img_name'   => 'zap_complete', 'teller_name'   => '鏡リュウジ',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'202' => array( 'chara' => 'k', 
+        'menu_title' => '2021年残り＋2023年前半も【鏡リュウジ責任編集】2022年あなたの運命',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/ryuji/inp183.html',
+        'contents_id'   => 'ryuji_rcm', 'img_name'   => 'rcm_ryuji', 'teller_name'   => '鏡リュウジ',
+        'menu_price' => '2000',   'menu_discount' => '1800', 'release_date'  => '20210901',
+	),
+	'203' => array( 'chara' => 'k', 
+        'menu_title' => '12ハウス全占断◆運命の「月」が告げる2022年～人生何がどう変わる？',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/tsukiyomi_rcm/inp125.html',
+        'contents_id'   => 'tsukiyomi_rcm', 'img_name'   => 'rcm_tsukiyomi', 'teller_name'   => '鏡リュウジ',
+        'menu_price' => '2000',   'menu_discount' => '1650', 'release_date'  => '20210901',
+	),
+	'204' => array( 'chara' => 'k', 
+        'menu_title' => '早めに知って損はない【2022年の運勢】カテゴリ別に詳しく教えます',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/bell/ksoul/free/inp/ks1366_inp.html',
+        'contents_id'   => 'ksoul_bel', 'img_name'   => 'bel_ksoul', 'teller_name'   => '鏡リュウジ',
+        'menu_price' => '1200',   'menu_discount' => '1000', 'release_date'  => '20210901',
+	),
+	'205' => array( 'chara' => 'k', 
+        'menu_title' => '前年と比べて上がる？　下がる？　2022年のあなたの運勢を大解明',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/bell/poseiza/free/inp/se1210_inp.html',
+        'contents_id'   => 'poseiza_bel', 'img_name'   => 'bel_poseiza', 'teller_name'   => '鏡リュウジ',
+        'menu_price' => '1200',   'menu_discount' => '1000', 'release_date'  => '20210901',
+	),
+	'206' => array( 'chara' => 'k', 
+        'menu_title' => '鏡リュウジの人生占【2022年あなたの運勢×転機】時期まで精密特定SP',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/fgryuji/UkwTopFG003000.html',
+        'contents_id'   => 'fgryuji_tel', 'img_name'   => 'tel_fgryuji', 'teller_name'   => '鏡リュウジ',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'207' => array( 'chara' => 'k', 
+        'menu_title' => '日英超一流占術家が占う！【恋・結婚・仕事・お金】2022年運命の全貌',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/herbal/inp242.html',
+        'contents_id'   => 'herbal_rcm', 'img_name'   => 'rcm_herbal', 'teller_name'   => '鏡リュウジ＋E.ブルーク',
+        'menu_price' => '1500',   'menu_discount' => '1100', 'release_date'  => '20210901',
+	),
+	'208' => array( 'chara' => 'k', 
+        'menu_title' => '【2022年のあなたはどうなる】○月○日人生変わる/選択/出来事/幸運',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/kamiyam/UkwTopKAMI0000300.html',
+        'contents_id'   => 'kamiyam_tel', 'img_name'   => 'tel_kamiyam', 'teller_name'   => '神山二三子',
+        'menu_price' => '1200',   'menu_discount' => '1000', 'release_date'  => '20210901',
+	),
+	'209' => array( 'chara' => 'k', 
+        'menu_title' => '花凛の特別予言≪2022年◇あなたの運命≫恋/仕事/訪れる新たな幕開け',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/mkb/karinst/kt120/index.html',
+        'contents_id'   => 'karinst_mkb', 'img_name'   => 'mkb_karinst', 'teller_name'   => '花凛',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'210' => array( 'chara' => 'k', 
+        'menu_title' => '木下レオンが占う【残り3ヶ月+2022年】あなたに訪れる運命/来年の姿',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tri/leon/pre/life004.html',
+        'contents_id'   => 'leon_tri', 'img_name'   => 'tri_leon', 'teller_name'   => '木下レオン',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'211' => array( 'chara' => 'k', 
+        'menu_title' => '【木下レオンが占う】2022年あなたの愛結婚◆年内婚の可能性/得る幸',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/rzreon/UkwTopRZ005100.html',
+        'contents_id'   => 'rzreon_tel', 'img_name'   => 'tel_rzreon', 'teller_name'   => '木下レオン',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'212' => array( 'chara' => 'k', 
+        'menu_title' => '【木下レオン人生占】2022年あなたの恋愛/仕事/結婚◆ちかっぱ的中SP',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/rzreon/UkwTopRZ005300.html',
+        'contents_id'   => 'rzreon_tel', 'img_name'   => 'tel_rzreon', 'teller_name'   => '木下レオン',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'213' => array( 'chara' => 'k', 
+        'menu_title' => '【2022年の仕事運】藤子◆特別鑑定……あなたの運気/評価/成功/転機',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/ccs/cc_fujiko/input/fk02371.html',
+        'contents_id'   => 'fujiko_ccs', 'img_name'   => 'ccs_fujiko', 'teller_name'   => '木村藤子',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'214' => array( 'chara' => 'k', 
+        'menu_title' => '【年運◆特別鑑定2022年限定版】あなたを待つ運命/恋/仕事/お金/幸福',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/ccs/cc_fujiko2/input/kf01267.html',
+        'contents_id'   => 'fujiko2_ccs', 'img_name'   => 'ccs_fujiko2', 'teller_name'   => '木村藤子',
+        'menu_price' => '2000',   'menu_discount' => '1600', 'release_date'  => '20210901',
+	),
+	'215' => array( 'chara' => 'k', 
+        'menu_title' => '2022年の結婚～あなたが出会う人【容姿/職業/評判】電撃結婚の可能性',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/ccs/cc_fujiko3/ak00111.html',
+        'contents_id'   => 'fujiko3_ccs', 'img_name'   => 'ccs_fujiko3', 'teller_name'   => '木村藤子',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'216' => array( 'chara' => 'k', 
+        'menu_title' => '2022年～2023年前半【恋、仕事、財、人生】銀座の母・22の運命予言',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/ginza_rcm/inp184.html',
+        'contents_id'   => 'ginza_rcm', 'img_name'   => 'rcm_ginza', 'teller_name'   => '銀座の母',
+        'menu_price' => '2200',   'menu_discount' => '1980', 'release_date'  => '20210901',
+	),
+	'217' => array( 'chara' => 'k', 
+        'menu_title' => '銀座の母がズバリ！　2022～2023前半あなたの全出来事・運命・18項目',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/ginsei/html/inp/inp240.html',
+        'contents_id'   => 'ginsei_rcm', 'img_name'   => 'rcm_ginsei', 'teller_name'   => '銀座の母',
+        'menu_price' => '1500',   'menu_discount' => '1100', 'release_date'  => '20210901',
+	),
+	'218' => array( 'chara' => 'k', 
+        'menu_title' => 'これぞ「銀座の母」の的中鑑定！　全30項目・2022年あなたの運命',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/ginzanohaha/html/inp/inp467.html',
+        'contents_id'   => 'ginzanohaha_rcm', 'img_name'   => 'rcm_ginzanohaha', 'teller_name'   => '銀座の母',
+        'menu_price' => '2000',   'menu_discount' => '1600', 'release_date'  => '20210901',
+	),
+	'219' => array( 'chara' => 'k', 
+        'menu_title' => '2022年あなたの運命【軍神ラジュール零子が占う】本気の恋/仕事/幸せ',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tri/gsrr/UkwTopGSRR0002900.html',
+        'contents_id'   => 'gsrr_tri', 'img_name'   => 'tri_gsrr', 'teller_name'   => '軍神ラジュール零子',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'220' => array( 'chara' => 'k', 
+        'menu_title' => '小泉茉莉花詳細鑑定【2022年の運勢】総合/恋愛/仕事/お金/結婚と生活',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/marika_stw/inp0027.html',
+        'contents_id'   => 'marika_stw', 'img_name'   => 'stw_marika', 'teller_name'   => '小泉茉莉花',
+        'menu_price' => '1500',   'menu_discount' => '1300', 'release_date'  => '20210901',
+	),
+
+
+	'301' => array( 'chara' => 's', 
+        'menu_title' => '2022年上半期◆桜井美帆が占う【2人の愛縁と恋未来SP】彼の想い/結末',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tri/iomiho/UkwTopIO004900.html',
+        'contents_id'   => 'iomiho_tri', 'img_name'   => 'tri_iomiho', 'teller_name'   => '桜井　美帆',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'302' => array( 'chara' => 's', 
+        'menu_title' => 'ジーニーからのメッセージ◆2022年あなたの恋/仕事/対人/訪れる幸福',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/genie3/html/inp/inp0055.html',
+        'contents_id'   => 'genie3_stw', 'img_name'   => 'stw_genie3', 'teller_name'   => 'ジーニー',
+        'menu_price' => '1500',   'menu_discount' => '1300', 'release_date'  => '20210901',
+	),
+	'303' => array( 'chara' => 's', 
+        'menu_title' => '黒猫が告げる！【2022年あなたの恋運命】出会いと結婚～彼との全進展',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/com/cat/0128.html',
+        'contents_id'   => 'cat_com', 'img_name'   => 'com_cat', 'teller_name'   => 'ジューン澁澤',
+        'menu_price' => '1100',   'menu_discount' => '900', 'release_date'  => '20210901',
+	),
+	'304' => array( 'chara' => 's', 
+        'menu_title' => '的中力に大反響！【2022年あなたの仕事運】現状打破＆成功への大転機',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/com/aut/3328.html',
+        'contents_id'   => 'aut_com', 'img_name'   => 'com_aut', 'teller_name'   => 'ジューン澁澤',
+        'menu_price' => '1100',   'menu_discount' => '900', 'release_date'  => '20210901',
+	),
+	'305' => array( 'chara' => 's', 
+        'menu_title' => '守護天使が告げる奇跡【2022年のあなた】運勢/恋/出会い/仕事/お金',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/sara_stw/menu/38.html',
+        'contents_id'   => 'sara_stw', 'img_name'   => 'stw_sara', 'teller_name'   => 'ジュヌビエーヴ・沙羅',
+        'menu_price' => '1500',   'menu_discount' => '1300', 'release_date'  => '20210901',
+	),
+	'306' => array( 'chara' => 's', 
+        'menu_title' => '希望が持てないあなたへ【2022年上半期恋愛運】ここまで教えます',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/bell/polhaha/free/inp/ss2205_inp.html',
+        'contents_id'   => 'polhaha_bel', 'img_name'   => 'bel_polhaha', 'teller_name'   => '新宿の母',
+        'menu_price' => '1000',   'menu_discount' => '800', 'release_date'  => '20210901',
+	),
+	'307' => array( 'chara' => 's', 
+        'menu_title' => '新宿の母からあなたへ【2022年運勢】“上半期”丸ごと詳細大鑑定',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/bell/polhaha/free/inp/ss1206_inp.html',
+        'contents_id'   => 'polhaha_bel', 'img_name'   => 'bel_polhaha', 'teller_name'   => '新宿の母',
+        'menu_price' => '1200',   'menu_discount' => '1000', 'release_date'  => '20210901',
+	),
+	'308' => array( 'chara' => 's', 
+        'menu_title' => '水晶玉子が占う【2022年あなたに起こる全転機】生活の変化/お金/仕事',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/toriental_zap/input/ot3217a.html',
+        'contents_id'   => 'suisho_zap', 'img_name'   => 'zap_suisho', 'teller_name'   => '水晶玉子',
+        'menu_price' => '1200',   'menu_discount' => '1020', 'release_date'  => '20210901',
+	),
+	'309' => array( 'chara' => 's', 
+        'menu_title' => '水晶玉子が先読み！　2022年のあなたの恋/結婚/仕事/対人/財/幸せ',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/fruits/input/fr00164.html',
+        'contents_id'   => 'fruits_stw', 'img_name'   => 'stw_fruits', 'teller_name'   => '水晶玉子',
+        'menu_price' => '1500',   'menu_discount' => '1300', 'release_date'  => '20210901',
+	),
+
+	'310' => array( 'chara' => 's', 
+        'menu_title' => 'シウマが贈る【超細密鑑定】2022年、あなたの職/恋愛/対人/お金/成功',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/shiuma2_zap/input/iu5007a.html',
+        'contents_id'   => 'shiuma2_zap', 'img_name'   => 'zap_shiuma2', 'teller_name'   => 'シウマ',
+        'menu_price' => '1500',   'menu_discount' => '1500', 'release_date'  => '20211214',
+	),
+	'311' => array( 'chara' => 's', 
+        'menu_title' => '島田秀平があなたの2022年を大予言≪恋愛・結婚・仕事・対人・お金≫',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/shimada2_zap/input/gn5001a.html',
+        'contents_id'   => 'shimada2_zap', 'img_name'   => 'zap_shimada2', 'teller_name'   => '島田秀平',
+        'menu_price' => '1500',   'menu_discount' => '1500', 'release_date'  => '20211207',
+	),
+	'312' => array( 'chara' => 's', 
+        'menu_title' => '水晶玉子が【あなたの2022年】をまるごと鑑定◆恋/結婚/仕事/対人/財',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/suisho_zap/input/st5010a.html',
+        'contents_id'   => 'suisho_zap', 'img_name'   => 'zap_suisho', 'teller_name'   => '水晶玉子',
+        'menu_price' => '1500',   'menu_discount' => '1500', 'release_date'  => '20211228',
+	),
+	'313' => array( 'chara' => 's', 
+        'menu_title' => '2022年総合運SP◇シウマがズバッと占う【対人/仕事/お金/転機/成功】',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/ryukyu_zap/input/ru5000a.html',
+        'contents_id'   => 'ryukyu_zap', 'img_name'   => 'zap_ryukyu', 'teller_name'   => 'シウマ',
+        'menu_price' => '1500',   'menu_discount' => '1500', 'release_date'  => '20220301',
+	),
+	'314' => array( 'chara' => 's', 
+        'menu_title' => 'シウマが占う【2022年あなたとあの人の恋】心の変化/結ばれる可能性',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/ryukyu_zap/input/ru6003a.html',
+        'contents_id'   => 'ryukyu_zap', 'img_name'   => 'zap_ryukyu', 'teller_name'   => 'シウマ',
+        'menu_price' => '1500',   'menu_discount' => '1500', 'release_date'  => '20220317',
+	),
+
+
+
+	'401' => array( 'chara' => 't', 
+        'menu_title' => '式神が告げる！【2022年あなたの運勢】訪れる宿命～幸せに生き抜く道',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/com/rik/5030.html',
+        'contents_id'   => 'rik_com', 'img_name'   => 'com_rik', 'teller_name'   => '高橋圭也',
+        'menu_price' => '1200',   'menu_discount' => '1000', 'release_date'  => '20210901',
+	),
+	'402' => array( 'chara' => 't', 
+        'menu_title' => '冨永浩美の恋占い【2022年に進展⇒交際成就占】彼の本音/転機/恋未来',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/tomihiro/UkwTopTOMI0001900.html',
+        'contents_id'   => 'tomihiro_tel', 'img_name'   => 'tel_tomihiro', 'teller_name'   => '冨永浩美',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+
+
+	'501' => array( 'chara' => 'n', 
+        'menu_title' => '具体的すぎ注意！【恋、仕事、人生】残り3ヵ月＋2022年あなたの運命',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/geppou/inp167.html',
+        'contents_id'   => 'geppou_rcm', 'img_name'   => 'rcm_geppou', 'teller_name'   => '梨田真路',
+        'menu_price' => '2000',   'menu_discount' => '1500', 'release_date'  => '20210901',
+	),
+	'502' => array( 'chara' => 'n', 
+        'menu_title' => '◆閲覧注：的中限界突破4000字◆2022年あなたの運命＜12の予言＞',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/geppou/inp169.html',
+        'contents_id'   => 'geppou_rcm', 'img_name'   => 'rcm_geppou', 'teller_name'   => '梨田真路',
+        'menu_price' => '2000',   'menu_discount' => '1500', 'release_date'  => '20210901',
+	),
+
+
+	'601' => array( 'chara' => 'h', 
+        'menu_title' => '『私、外しません』2022年の出来事＆時期当て占※あなたに次起こる事',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/hanaway/UkwTopHANA0000300.html',
+        'contents_id'   => 'hanaway_tel', 'img_name'   => 'tel_hanaway', 'teller_name'   => '塙釉妃',
+        'menu_price' => '800',   'menu_discount' => '600', 'release_date'  => '20210901',
+	),
+	'602' => array( 'chara' => 'h', 
+        'menu_title' => '白猫タロットが映す2022年◇あなたの一年を丸ごと徹底鑑定【保存版】',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/shironeko_zap/input/nk3207a.html',
+        'contents_id'   => 'shironeko_zap', 'img_name'   => 'zap_shironeko', 'teller_name'   => '濱口善幸',
+        'menu_price' => '1200',   'menu_discount' => '1020', 'release_date'  => '20210901',
+	),
+	'603' => array( 'chara' => 'h', 
+        'menu_title' => 'グランジュルノルマンが告げる2022年◆あなたの恋、仕事、対人⇒幸福',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/bijou/html/inp/inp0030.html',
+        'contents_id'   => 'bijou_stw', 'img_name'   => 'stw_bijou', 'teller_name'   => 'Bijou',
+        'menu_price' => '1300',   'menu_discount' => '1100', 'release_date'  => '20210901',
+	),
+	'604' => array( 'chara' => 'h', 
+        'menu_title' => 'あなたの人生【2022年の成功＆飛躍叶える鑑定】好機/選択肢/人生岐路',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/mcpad/hrhirao/UkwTopHR004700.html',
+        'contents_id'   => 'hrhirao_mcp', 'img_name'   => 'mcp_hrhirao', 'teller_name'   => '平尾知子',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'605' => array( 'chara' => 'h', 
+        'menu_title' => '2022年運命占【あなただけの特別な転機/成功の兆し】掴む好機/1年後',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/mcpad/hxrara/UkwTopHX002200.html',
+        'contents_id'   => 'hxrara_mcp', 'img_name'   => 'mcp_hxrara', 'teller_name'   => '平家楽々',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'606' => array( 'chara' => 'h', 
+        'menu_title' => '星健太郎が全力運命占断◆2022年あなたの恋/結婚/仕事/対人/財/幸せ',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/kentaro2/html/inp/inp0018.html',
+        'contents_id'   => 'kentaro_stw', 'img_name'   => 'stw_kentaro', 'teller_name'   => '星健太郎',
+        'menu_price' => '1500',   'menu_discount' => '1300', 'release_date'  => '20210901',
+	),
+	'607' => array( 'chara' => 'h', 
+        'menu_title' => 'あなたの2022年運勢をTVみたいに“ロックオン”！　全運命と全出来事',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/hoshihitomi/inp314.html',
+        'contents_id'   => 'hoshihitomi_rcm', 'img_name'   => 'rcm_hoshihitomi', 'teller_name'   => '星ひとみ',
+        'menu_price' => '1500',   'menu_discount' => '1100', 'release_date'  => '20210901',
+	),
+	'608' => array( 'chara' => 'h', 
+        'menu_title' => '2022～2023年前半、あなたの運勢豪華16項目～恋/仕事/財/出逢い/人生',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/rcm/hoshi2_rcm/inp115.html',
+        'contents_id'   => 'hoshi2_rcm', 'img_name'   => 'rcm_hoshi2', 'teller_name'   => '星ひとみ',
+        'menu_price' => '2200',   'menu_discount' => '1980', 'release_date'  => '20210901',
+	),
+	'609' => array( 'chara' => 'h', 
+        'menu_title' => '法演が断言【あなたの2022年◆絶対運命】現状/恋/仕事/人生※完全版',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/houen_zap/input/hp5006a.html',
+        'contents_id'   => 'houen_zap', 'img_name'   => 'zap_houen', 'teller_name'   => '法演',
+        'menu_price' => '1500',   'menu_discount' => '1500', 'release_date'  => '20211223',
+	),
+	'610' => array( 'chara' => 'h', 
+        'menu_title' => '星ひとみ【2022年◆あなたの光と影の総合運】人生/仕事/お金/恋/結婚',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/tenseijutsu_zap/input/tj5004a.html',
+        'contents_id'   => 'tenseijutsu_zap', 'img_name'   => 'zap_tenseijutsu', 'teller_name'   => '星ひとみ',
+        'menu_price' => '1500',   'menu_discount' => '1500', 'release_date'  => '20211216',
+	),
+
+
+	'701' => array( 'chara' => 'm', 
+        'menu_title' => '【Heartfelt Tarot】2022年あなたの全運勢⇒恋/結婚……手にする幸せ',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/akr2/html/inp/inp0033.html',
+        'contents_id'   => 'akr2_stw', 'img_name'   => 'stw_akr2', 'teller_name'   => '真木あかり',
+        'menu_price' => '1200',   'menu_discount' => '1000', 'release_date'  => '20210901',
+	),
+	'702' => array( 'chara' => 'm', 
+        'menu_title' => '2022年『仕事で成功叶えます』転職/昇給/待遇改善◆あなたの仕事占SP',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tri/eymike/UkwTopEY003400.html',
+        'contents_id'   => 'eymike_tri', 'img_name'   => 'tri_eymike', 'teller_name'   => 'みけまゆみ',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'703' => array( 'chara' => 'm', 
+        'menu_title' => '驚異の占断力◆星×血液型で見る2022年のあなた/恋/結婚/職/財/人/幸',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/mita_stw/inp0029.html',
+        'contents_id'   => 'mita_stw', 'img_name'   => 'stw_mita', 'teller_name'   => '三田モニカ',
+        'menu_price' => '1500',   'menu_discount' => '1300', 'release_date'  => '20210901',
+	),
+	'704' => array( 'chara' => 'm', 
+        'menu_title' => '三波ママが贈る幸運指南書【2022年あなたの全運勢】恋/仕事/財/結婚',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/stw/minami_stw/menu/28.html',
+        'contents_id'   => 'minami_stw', 'img_name'   => 'stw_minami', 'teller_name'   => '三波ちぇこ',
+        'menu_price' => '1500',   'menu_discount' => '1300', 'release_date'  => '20210901',
+	),
+	'705' => array( 'chara' => 'm', 
+        'menu_title' => '何が起きるか一目瞭然◆古代文字が示す【2022年に訪れる8の出来事】',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/com/yra/8022.html',
+        'contents_id'   => 'yra_com', 'img_name'   => 'com_yra', 'teller_name'   => '森堂友里愛',
+        'menu_price' => '1200',   'menu_discount' => '1000', 'release_date'  => '20210901',
+	),
+
+
+	/*'801' => array( 'chara' => 'y', 
+		'menu_title' => '',
+		'menu_url'   => '',
+		'contents_id'   => '', 'img_name'   => '', 'teller_name'   => '',
+		'menu_price' => '',   'menu_discount' => '', 'release_date'  => '20210901',
+	),*/
+
+
+	'901' => array( 'chara' => 'r', 
+        'menu_title' => 'ラヴィー・ヒトミが贈る【2022年◆運命決定版】あなたの恋/人生/仕事',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/ravi/UkwTopRAVI0002600.html',
+        'contents_id'   => 'ravi_tel', 'img_name'   => 'tel_ravi', 'teller_name'   => 'ラヴィー・ヒトミ',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'902' => array( 'chara' => 'r', 
+        'menu_title' => 'LoveMeDoが当てる【あなたの2022年運勢・大予言SP】結婚/仕事/財/幸',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/dmlove/UkwTopDM005900.html',
+        'contents_id'   => 'dmlove_tel', 'img_name'   => 'tel_dmlove', 'teller_name'   => 'LoveMeDo',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'903' => array( 'chara' => 'r', 
+        'menu_title' => 'この1年で彼と交際できる？【2022年◆2人の恋現実SP】進展/転機/結末',
+        'menu_url'   => 'http://charge.fortune.yahoo.co.jp/tel/dmlove/UkwTopDM006000.html',
+        'contents_id'   => 'dmlove_tel', 'img_name'   => 'tel_dmlove', 'teller_name'   => 'LoveMeDo',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+	'904' => array( 'chara' => 'r', 
+        'menu_title' => '人生変わる的中秘儀で予言！【2022年】去る苦悩・始まる恋・掴む成功',
+        'menu_url'   => 'https://charge-fortune.yahoo.co.jp/zap/thoth_zap/input/tt5006a.html',
+        'contents_id'   => 'thoth_zap', 'img_name'   => 'zap_thoth', 'teller_name'   => 'レオン・サリラ',
+        'menu_price' => '1500',   'menu_discount' => '1200', 'release_date'  => '20210901',
+	),
+);
+
+$SmartyObj->assign( 'list_extra', getIndexData3( $ExtraData ) );
+$list_extra2 = array( 'a' => 0, 'k' => 0, 's' => 0, 't' => 0, 'n' => 0, 'h' => 0, 'm' => 0, 'y' => 0, 'r' => 0, 'w' => 0 );
+foreach( $ExtraData as $row ) {
+	if( $row['release_date'] > $self->get('release_date') ) continue;
+	$list_extra2[ $row['chara'] ] = 1;
+}
+$SmartyObj->assign( 'list_extra2', $list_extra2 );
+
+
+?>

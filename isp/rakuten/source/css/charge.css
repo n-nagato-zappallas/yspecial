@@ -1,0 +1,245 @@
+/*--------------------*
+ *  default settings
+ *--------------------*/
+*{
+  margin: 0px;
+  padding: 0px;
+}
+html{
+  overflow-y:scroll;
+}
+BODY{
+  text-align:center;
+  font-size:80%;
+  line-height:1.3;
+  color:#686868;
+  font-family: "¥Ò¥é¥®¥Î³Ñ¥´ Pro W3","Hiragino Kaku Gothic Pro",Osaka,"£Í£Ó £Ð¥´¥·¥Ã¥¯";
+  _line-break: strict;
+  background:#430627 url(../../image/charge/bg.jpg) repeat-x 50% 0%;
+}
+IMG{
+  border: 0;
+  vertical-align: middle;
+}
+FORM{
+  margin: 0 auto;
+  padding: 0;
+}
+TABLE{
+  border-collapse: collapse;
+  empty-cells: hide;
+  text-align: left;
+  font-size: 1em;
+  border: 0;
+  padding: 0;
+}
+TR, TD, TH, THEAD, TBODY, TFOOT, COLGROUP, COL{}
+UL{
+  margin: 0;
+  padding: 0;
+  list-style-type: disc;
+}
+OL{
+  margin: 0;
+  padding: 0;
+}
+LI{
+  margin: 0;
+  padding: 0;
+}
+H1,H2,H3,H4,H5{
+  margin: 0 auto;
+  text-align: left;
+}
+P{
+  margin: 0 auto;
+  text-align: left;
+}
+HR{display:none;}
+EM{font-style:normal;font-weight:bold;}
+H1,H2,H3,H4,H5,H6{font-size:1em;}
+A{color:#C73566;outline : 0;}
+A:hover{
+  color:#a935c7;
+  text-decoration:none;
+}
+/*--------------------
+common class setting
+--------------------*/
+.clear{
+  clear: both;
+  float:none;
+  line-height:0px;
+  font-size:0px;
+  height:0px;
+}
+.hide{
+  display:none!important;
+}
+.invisible{
+  display:none;
+}
+/*--------------------
+#base
+--------------------*/
+#base{
+  margin:40px auto;
+  width:724px;
+}
+#base #main_hdr{
+  background:url(../../image/charge/main_hdr.gif) no-repeat 50% top;
+  margin-bottom:60px;
+}
+#base #main_ftr{
+  background:url(../../image/charge/main_ftr.gif) no-repeat 50% bottom;
+  padding-bottom:10px;
+  width:100%;
+}
+#base #main_bdy{
+  background:url(../../image/charge/main_bdy.gif) repeat-y 50% top;
+}
+#base #contents_banner{
+  margin:10px auto;
+  text-align:center;
+}
+#base #frm_btn{
+  margin-bottom:30px;
+}
+
+/*--------------------*
+#header
+*--------------------*/
+#header{
+  height:110px;
+}
+#header H1{
+  height:90px;
+}
+/*--------------------*
+#topicpath
+*--------------------*/
+#topicpath{
+  margin:0px auto 0px;
+  color:#5b5b5b;
+  padding:5px 10px;
+}
+/*--------------------*
+#charge_tbl
+*--------------------*/
+#charge_tbl{
+  margin:30px auto;
+  width:500px;
+  border:2px solid #4b3939;
+  color:#430627;
+}
+#charge_tbl .tbl_hdr TH{
+  width:100px;
+  height:50px;
+  text-align:right;
+  font-size:1.1em;
+  font-weight:normal;
+  padding-right:10px;
+  border:1px solid #4b3939;
+  background:#FED3E6;
+}
+#charge_tbl .tbl_hdr TD{
+  width:400px;
+  padding-left:10px;
+  border:1px solid #4b3939;
+}
+#charge_tbl .tbl_bdy TD{
+  padding:30px 60px;
+}
+/*--------------------
+#footer
+--------------------*/
+#footer{
+  height:1%;
+  margin:0px auto;
+  padding-top:6px;
+  padding-bottom:30px;
+  _padding-bottom:20px;
+  text-align:center;
+  clear:both;
+  background:url(../../image/charge/line.gif) no-repeat 50% top;
+}
+#footer ADDRESS,
+#footer EM{
+  text-decoration:none;
+  font-style:normal;
+}
+#footer_copy{}
+#zap_copy{margin-top:10px;}
+#zap_copy{color:#5b5b5b;}
+#footer A:hover{color:#c8003c;}
+
+/*--------------------*
+#maintenance
+*--------------------*/
+#maintenance{
+  width: 560px;
+  _width:576px;
+  margin: 15px auto 15px auto;
+  border: 3px solid #9A0059;
+  padding:10px 5px;
+  font-size: 1em;
+  text-align: center;
+  color: #4B4B4B;
+  background-color: #e5dacb;
+}
+#maintenance #maintenance_title{
+  padding-bottom:4px;
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #4B4B4B;
+}
+
+#maintenance P.maintenanceDate{
+  margin: 0 auto 5px;
+  text-align: center;
+  font-weight: bold;
+  color: #9A0059;
+}
+#maintenance P.maintenanceComment{
+  text-align: left;
+  line-height: 1.3;
+  text-align: center;
+}
+#maintenance A{
+  color:#9A0059;
+  background:#e5dacb!important;
+}
+/*--------------------*
+#settlement_hdr
+#expired_hdr
+*--------------------*/
+
+#base #settlement_hdr{
+  background:url(../../image/charge/settlement_hdr.gif) no-repeat 50% top;
+  margin-bottom:60px;
+}
+#base #expired_hdr{
+  background:url(../../image/charge/expired_hdr.gif) no-repeat 50% top;
+  margin-bottom:60px;
+}
+.section_bdy{
+  padding:10px 60px;
+}
+.section_bdy H2{
+  font-size:2em;
+  color:#c8003c;
+  text-align:center;
+}
+.section_bdy #attention_area{
+  border:4px double #C39FAF;
+  font-size:1.1em;
+  line-height:1.3em;
+  margin:20px auto 50px;
+  padding:30px;
+}
+.section_bdy P{
+  text-align:center;
+}
+.section_bdy .top_path{
+  margin-bottom:10px;
+}
